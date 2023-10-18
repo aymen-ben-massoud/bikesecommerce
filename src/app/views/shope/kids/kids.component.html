@@ -1,0 +1,18 @@
+<div class="container" >
+    <div class="row"  >
+        <div class="col-md-4 col-12  mt-4" *ngFor="let  item of dataproducts" ><div  >
+            <div  class="card my-2" routerLink="/details/details/{{ item.id }}">
+                <img src="{{item.img}}" class="card-img-top" alt="...">
+                <div class="btext m-2">
+                     <h5 class="card-title d-flex">{{item.name}}</h5><p>{{item.price |currency}}</p>
+
+                    </div> 
+                    <button class=" w-100  shope" >Shope Now <i class="fa-solid fa-cart-shopping"></i></button>
+             
+                </div>
+              </div>
+     </div>
+       
+        
+    </div>
+</div>

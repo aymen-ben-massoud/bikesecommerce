@@ -1,0 +1,174 @@
+
+<div class="container mt-5 pt-4">
+    <div class="row justify-content-center "><div class="col">
+  
+    
+  </div>
+ 
+ 
+  <button class=" btn btn-outline-danger m-2" routerLink="/orders" >ORDERS</button>
+  <button class=" btn btn-outline-success m-2 " class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal2">Add product</button>
+
+  
+  <table class="table p-2 m-2">
+  
+      <thead>
+        <tr>
+          <th scope="col">image</th>
+          <th scope="col">name</th>
+          <th scope="col">update</th>
+          <th scope="col">delete</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let item of productlist; index as i">
+          <td> <img src="{{item.img}}"></td>
+          <td><p class="">{{item.name}}</p></td>
+   
+          <td> <button  (click)="updateproducts(item.id)" type="button" class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-pen-nib"></i></button></td>
+          <td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                 
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+               you want to delete this product ?
+                </div>
+                <div class="modal-footer">
+                  <button  #close2 type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" (click)="deletep(i)" >delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+        
+      </tbody> 
+    </table>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p>Update product</p>
+          <button #close type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+       
+        <div class="modal-footer">
+        
+          <form #f="ngForm"  >
+          
+            <div class="form-group">
+            <label for="exampleInputEmail1">category</label>
+        
+            <select ngModel   #category="ngModel" required name="category" aria-label="Default select example"  class="form-select" aria-label="Default select example">
+             
+              <option  >mens</option>
+              <option >kids</option>
+            
+            </select>
+           <div class="alert alert-danger" *ngIf="category.touched && category.invalid"> category required</div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">amount</label>
+            <input type="number" placeholder="always 1" class="form-control" ngModel  #amount="ngModel" required name="amount">
+  
+           <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid"> amount required</div>
+          </div>
+         
+          <div class="form-group">
+            <label for="exampleInputEmail2">name</label>
+            <input type="text" class="form-control" placeholder="shoes" ngModel  #name="ngModel" required name="name">
+  
+           <div class="alert alert-danger" *ngIf="name.touched && name.invalid"> name required</div>
+          </div>
+         
+  
+          <div class="form-group">
+            <label for="exampleInputEmail3">price</label>
+            <input type="number" class="form-control" ngModel placeholder="99" #price="ngModel" required name="price">
+  
+           <div class="alert alert-danger" *ngIf="price.touched && price.invalid"> price required</div>
+          </div>
+         
+      
+            <div class="form-group">
+              <label for="exampleInputPassword1"  >url image</label>
+              <input       type="text" class="form-control" #img="ngModel" required name="img"ngModel required #image >
+            </div>
+             <div class="alert alert-danger" *ngIf="img.touched && img.invalid"> url required</div>
+      
+         
+            <button type="submit" class="btn btn-outline-success m-3"  (click)="submitupdate()" [disabled]="f.invalid">update product</button>
+         
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div></div>
+
+
+    
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <p>Add product</p>
+          <button #close3 type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  <div class="modal-footer">
+  <form #f2="ngForm" (submit)="addproduct(f2.value)" >
+          
+    <div class="form-group">
+    <label for="exampleInputEmail1">category</label>
+
+    <select ngModel   #category="ngModel" required name="category" aria-label="Default select example"  class="form-select" aria-label="Default select example">
+     
+      <option  >mens</option>
+      <option >kids</option>
+    
+    </select>
+   <div class="alert alert-danger" *ngIf="category.touched && category.invalid"> category required</div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">amount</label>
+    <input type="number" placeholder="always 1" class="form-control" ngModel  #amount="ngModel" required name="amount">
+
+   <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid"> amount required</div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="exampleInputEmail2">name</label>
+    <input type="text" class="form-control" placeholder="shoes" ngModel  #name="ngModel" required name="name">
+
+   <div class="alert alert-danger" *ngIf="name.touched && name.invalid"> name required</div>
+  </div>
+ 
+
+  <div class="form-group">
+    <label for="exampleInputEmail3">price</label>
+    <input type="number" class="form-control" ngModel placeholder="99" #price="ngModel" required name="price">
+
+   <div class="alert alert-danger" *ngIf="price.touched && price.invalid"> price required</div>
+  </div>
+ 
+
+    <div class="form-group">
+      <label for="exampleInputPassword1"  >url image</label>
+      <input       type="text" class="form-control" #img="ngModel" required name="img"ngModel required #image >
+    </div>
+     <div class="alert alert-danger" *ngIf="img.touched && img.invalid"> url required</div>
+
+ 
+    <button type="submit" class="btn btn-outline-success m-3"  [disabled]="f2.invalid">Add product</button>
+ 
+  </form></div>
+        </div>
+      </div>
+    </div>

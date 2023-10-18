@@ -1,0 +1,43 @@
+
+
+
+
+<div class="container  "><div class="row"><div class="col-12  d-md-flex  justify-content-center align-items-center"></div>
+
+    <!-- second -->
+
+    <html lang="en">
+
+<head>
+  <title>Harvest vase</title>
+  <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="product-img">
+      <img src="{{products.img}}">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1>{{products.name}}</h1>
+        <h2> {{products.category}}</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis et amet facilis, provident tenetur maiores dolor doloremque! Nostrum, eum debitis</p>
+      </div>
+      <div class="product-price-btn">
+        <p>{{products.price | currency}}</p>
+        <button (click)="buy()"  [ngStyle] = "{
+
+          'color' : buy2 ? '#274d5a'  : '#ffff',
+          'pointer-events' :  buy2 ? 'none' :'auto'
+        }"   class="bc"   >{{BUY}}</button>
+         
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+</div>
+</div>

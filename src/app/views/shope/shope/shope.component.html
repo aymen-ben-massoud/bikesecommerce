@@ -1,0 +1,37 @@
+
+
+<div class="container"   ><div class="row"><div class="col-12">
+
+    <nav class="d-flex mb-5">
+<button (click)="rowfunction()"  class="btn btn-white m-2 mx-4 px-4" *ngIf="route.url !== '/shope' " ><i class="fa-solid fa-arrow-left"></i></button>
+        <button routerLinkActive="borderactive"  (click)="exist1()"  class="btn btn-white m-2 mx-4 px-4" routerLink="kids">kids</button>
+        
+        <button class="btn btn-white m-2 mx-4 px-4"   routerLinkActive="borderactive"   (click)="exist2()"  routerLink="mens" >mens</button>
+
+        <app-search *ngIf="route.url == '/shope'" (searchtextchanged)="onsearchtextentred($event)" ></app-search>
+    </nav>
+    
+    <!--  -->
+    
+    
+    <div class="container "  *ngIf="exist">
+        <div class="row"  >
+            <div class="col-md-4 col-12  mt-4" *ngFor="let  item of dataproducts" ><div  >
+                <div *ngIf="searchtext === '' || item.name?.includes(searchtext | lowercase)" class="card my-2" routerLink="/details/details/{{ item.id }}">
+                    <img src="{{item.img}}" class="card-img-top" alt="...">
+                    <div class="btext m-2">
+                         <h5 class="card-title d-flex">{{item.name}}</h5><p>{{item.price |currency}}</p>
+ 
+                        </div> 
+                        <button class=" w-100  shope" >Shope Now <i class="fa-solid fa-cart-shopping"></i></button>
+                 
+                    </div>
+                  </div>
+         </div>
+           
+            
+        </div>
+    </div>
+    </div>
+
+ <router-outlet   *ngIf="!exist" ></router-outlet>
